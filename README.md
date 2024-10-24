@@ -32,6 +32,11 @@ Follow these steps to set up and run the project.
   ```sh
   docker-compose up -d
   ```
+  To make sure the database exists, you can run:
+  ```sh
+  symfony console doctrine:database:create --if-not-exists
+  ```
+
 
 5. **Run database migrations:**
   ```sh

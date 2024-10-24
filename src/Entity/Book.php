@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\BookStatus;
 use App\Repository\BookRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,7 +26,7 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $cover = null;
 
-    #[ORM\Column(type: Types::DATE_IMMUTABLE)]
+    #[ORM\Column]
     private ?\DateTimeImmutable $editedAt = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -39,6 +41,14 @@ class Book
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Editor $editor = null;
+
+    #[ORM\ManyToMany(targetEntity: Author::class, mappedBy: 'books')]
+    private Collection $authors;
+
+    public function __construct()
+    {
+        $this->authors = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +147,32 @@ class Book
     public function setEditor(?Editor $editor): static
     {
         $this->editor = $editor;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Author>
+     */
+    public function getAuthors(): Collection
+    {
+        return $this->authors;
+    }
+
+    public function addAuthor(Author $author): static
+    {
+      if (!$this->authors->contains($author)) {
+        $this->authors->add($author);
+        $author->addBook($this);
+    }
+
+    return $this;
+    }
+    public function removeAuthor(Author $author): static
+    {
+        if ($this->authors->removeElement($author)) {
+            $author->removeBook($this);
+        }
 
         return $this;
     }

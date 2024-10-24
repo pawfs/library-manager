@@ -15,40 +15,44 @@ Follow these steps to set up and run the project.
 ### Installation
 
 1. **Clone the repository:**
-  ```sh
+```sh
   git clone https://github.com/pawfs/library-manager.git
-  cd biblios
-  ```
+  cd library-manager
+```
 
 2. **Install dependencies:**
-  ```sh
+```sh
   composer install
-  ```
+```
 
 3. **Start Docker:**
   Make sure Docker is running on your machine. (Open docker desktop)
 
 4. **Build and start the containers:**
-  ```sh
+```sh
   docker-compose up -d
-  ```
-  To make sure the database exists, you can run:
-  ```sh
+```
+    To make sure the database exists, you can run:
+```sh
   symfony console doctrine:database:create --if-not-exists
-  ```
-
+```
 
 5. **Run database migrations:**
-  ```sh
+```sh
   symfony console doctrine:migrations:migrate
-  ```
+```
 
 6. **Start the Symfony server:**
-  ```sh
+```sh
   symfony serve
-  ```
+```
 
 ### Access the Application
 
 Open your browser and navigate to `http://localhost:8000`.
 
+### After making a change to the database (like changes in entities)
+  ```sh
+  symfony console make:migration
+  symfony console doctrine:migrations:migrate
+  ```

@@ -1,6 +1,6 @@
-# Biblios
+# Library manager
 
-Biblios is a website for managing a library. It allows users to browse books.
+Library-manager is a website for managing a library. It allows users to browse books.
 
 ## Getting Started
 
@@ -16,7 +16,7 @@ Follow these steps to set up and run the project.
 
 1. **Clone the repository:**
   ```sh
-  git clone https://github.com/pawfs/biblios.git
+  git clone https://github.com/pawfs/library-manager.git
   cd biblios
   ```
 

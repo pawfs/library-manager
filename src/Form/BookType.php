@@ -21,45 +21,45 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class BookType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('title', TextType::class)
-            ->add('isbn', TextType::class)
-            ->add('cover', UrlType::class)
-            ->add('editedAt', DateType::class, [
-                'input' => 'datetime_immutable',
-                'widget' => 'single_text',
-            ])
-            ->add('plot', TextareaType::class)
-            ->add('pageNumber', NumberType::class)
-            ->add('status', EnumType::class, [
-                'class' => BookStatus::class,
-            ])
-            ->add('editor', EntityType::class, [
-                'class' => Editor::class,
-                'choice_label' => 'id',
-            ])
-            ->add('authors', EntityType::class, [
-                'class' => Author::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-                'by_reference' => false,
-            ])
-            ->add('certification', CheckboxType::class, [
-              'mapped' => false,
-              'label' => "I certify the accuracy of the information provided",
-              'constraints' => [
-                  new Assert\IsTrue(message: "You must check the box to add a book."),
-              ],
-          ])
-        ;
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options): void
+  {
+    $builder
+      ->add('title', TextType::class)
+      ->add('isbn', TextType::class)
+      ->add('cover', UrlType::class)
+      ->add('editedAt', DateType::class, [
+        'input' => 'datetime_immutable',
+        'widget' => 'single_text',
+      ])
+      ->add('plot', TextareaType::class)
+      ->add('pageNumber', NumberType::class)
+      ->add('status', EnumType::class, [
+        'class' => BookStatus::class,
+      ])
+      ->add('editor', EntityType::class, [
+        'class' => Editor::class,
+        'choice_label' => 'name',
+      ])
+      ->add('authors', EntityType::class, [
+        'class' => Author::class,
+        'choice_label' => 'name',
+        'multiple' => true,
+        'by_reference' => false,
+      ])
+      ->add('certification', CheckboxType::class, [
+        'mapped' => false,
+        'label' => "I certify the accuracy of the information provided",
+        'constraints' => [
+          new Assert\IsTrue(message: "You must check the box to add a book."),
+        ],
+      ])
+    ;
+  }
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Book::class,
-        ]);
-    }
+  public function configureOptions(OptionsResolver $resolver): void
+  {
+    $resolver->setDefaults([
+      'data_class' => Book::class,
+    ]);
+  }
 }

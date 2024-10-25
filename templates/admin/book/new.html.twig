@@ -1,32 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Add book
+{% set action = app.current_route == 'app_admin_book_new' ? 'Add' : 'Edit' %}
+
+{% block title %}
+	{{ action }}
+	book
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 98%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-
 	<section class="container px-4">
 		<div class="w-50 m-auto">
-			<div class="example-wrapper">
-				<h1>Add book</h1>
+			<h1>{{ action }}
+				book</h1>
 
-				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Send</button>
-				{{ form_end(form) }}
-			</div>
+			{{ form_start(form) }}
+			{{ form_row(form.title,) }}
+			{{ form_row(form.isbn, ) }}
+			{{ form_row(form.cover, ) }}
+			{{ form_row(form.editedAt, ) }}
+			{{ form_row(form.plot, ) }}
+			{{ form_row(form.pageNumber, ) }}
+			{{ form_row(form.status,) }}
+			{{ form_row(form.editor, ) }}
+			{{ form_row(form.authors, ) }}
+			<button type="submit" class="btn btn-primary">Send</button>
+			{{ form_end(form) }}
 		</div>
 	</section>
 {% endblock %}

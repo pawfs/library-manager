@@ -5,8 +5,7 @@
 
 {% block body %}
 	<section class="container px-4">
-		<h1>Book :
-		</h1>
+		<h1>Book :</h1>
 
 		{% if book is not null %}
 			<div class="card mb-1 m-auto">
@@ -42,7 +41,8 @@
 							<li class="list-group-item">
 								<h5>Editor :
 								</h5>
-								<a href="{{ path('app_admin_editor_show', {id: book.editor.id}) }}">{{ book.editor.name }}</a>
+								{# <a href="{{ path('app_admin_editor_show', {id: book.editor.id}) }}">{{ book.editor.name }}</a> #}
+								{{ book.editor.name }}
 							</li>
 							<li class="list-group-item">
 								<h5>Page number:

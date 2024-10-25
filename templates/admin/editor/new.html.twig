@@ -1,33 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Add editor
+{% set action = app.current_route == 'app_admin_editor_new' ? 'Add' : 'Edit' %}
+
+{% block title %}
+	{{ action }}
+	editor
 {% endblock %}
 
 {% block body %}
-	<style>
-		.example-wrapper {
-			margin: 1em auto;
-			max-width: 800px;
-			width: 98%;
-			font: 18px / 1.5 sans-serif;
-		}
-		.example-wrapper code {
-			background: #F5F5F5;
-			padding: 2px 6px;
-		}
-	</style>
-
 	<section class="container px-4">
 		<div class="w-50 m-auto">
-			<div class="example-wrapper">
-				<h1 class="fw-bolder">Add editor</h1>
+			<h1>{{ action }}
+				editor</h1>
 
-				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button type="submit" class="btn btn-primary">Send</button>
-				{{ form_end(form) }}
-			</div>
+			{{ form_start(form) }}
+			{{ form_row(form.name, ) }}
+			<button type="submit" class="btn btn-primary">Send</button>
+			{{ form_end(form) }}
 		</div>
-
 	</section>
 {% endblock %}

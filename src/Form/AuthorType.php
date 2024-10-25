@@ -14,36 +14,36 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AuthorType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('name', TextType::class)
-            ->add('dateOfBirth', DateType::class, [
-                'input' => 'datetime_immutable',
-                'widget' => 'single_text',
-                // can add label here
-            ])
-            ->add('dateOfDeath', DateType::class , [
-                'input' => 'datetime_immutable',
-                'widget' => 'single_text',
-                'required' => false,
-            ])
-            ->add('nationality', TextType::class, [
-                'required' => false,
-            ])
-            ->add('books', EntityType::class, [
-                'class' => Book::class,
-                'choice_label' => 'id',
-                'multiple' => true,
-                'required' => false,
-            ])
-        ;
-    }
+  public function buildForm(FormBuilderInterface $builder, array $options): void
+  {
+    $builder
+      ->add('name', TextType::class)
+      ->add('dateOfBirth', DateType::class, [
+        'input' => 'datetime_immutable',
+        'widget' => 'single_text',
+        // can add label here
+      ])
+      ->add('dateOfDeath', DateType::class, [
+        'input' => 'datetime_immutable',
+        'widget' => 'single_text',
+        'required' => false,
+      ])
+      ->add('nationality', TextType::class, [
+        'required' => false,
+      ])
+      ->add('books', EntityType::class, [
+        'class' => Book::class,
+        'choice_label' => 'name',
+        'multiple' => true,
+        'required' => false,
+      ])
+    ;
+  }
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => Author::class,
-        ]);
-    }
+  public function configureOptions(OptionsResolver $resolver): void
+  {
+    $resolver->setDefaults([
+      'data_class' => Author::class,
+    ]);
+  }
 }

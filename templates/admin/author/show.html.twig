@@ -49,5 +49,6 @@
 			{% endif %}
 
 			<a href="{{ path('app_admin_author_index') }}" class="btn btn-primary">Return</a>
+			<a href="{{ path('app_admin_author_edit', {id: author.id}) }}" class="btn btn-warning">Edit</a>
 		</section>
 	{% endblock %}

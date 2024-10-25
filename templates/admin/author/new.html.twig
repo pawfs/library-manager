@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Add author
+{% set action = app.current_route == 'app_admin_author_new' ? 'Add' : 'Edit' %}
+
+{% block title %}
+	{{ action }}
+	author
 {% endblock %}
 
 {% block body %}
@@ -21,7 +25,8 @@
 	<section class="container px-4">
 		<div class="”w-50" m-auto”>
 			<div class="example-wrapper">
-				<h1 class="fw-bolder">Add author</h1>
+				<h1 class="fw-bolder">{{ action }}
+					author</h1>
 				{{ form_start(form) }}
 				{{ form_widget(form) }}
 				<button type="submit" class="btn btn-primary">Send</button>

@@ -5,11 +5,10 @@
 
 {% block body %}
 	<section class="container px-4">
-		<h1>Editor :
-		</h1>
-
+		<h1>Editor Details:</h1>
+    
 		{% if editor is not null %}
-			<div class="card mb-1 m-auto">
+			<div class="card mb-1 m-auto mt-4">
 				<div class="card-body">
 					<div class="card-title d-flex justify-content-between">
 						<h4 class="mb-1">{{ editor.name }}</h4>
@@ -19,9 +18,9 @@
 				</div>
 			</div>
 		{% else %}
-			<div>Editor 404 not found</div>
+			<div class="mt-4">Editor 404 not found</div>
 		{% endif %}
-		<a href="{{ path('app_admin_editor_index') }}" class="btn btn-primary">Return</a>
-		<a href="{{ path('app_admin_editor_edit', {id: editor.id}) }}" class="btn btn-warning">Edit</a>
+		<a href="{{ path('app_admin_editor_index') }}" class="btn btn-primary mt-4">Return</a>
+		<a href="{{ path('app_admin_editor_edit', {id: editor.id}) }}" class="btn btn-warning mt-4">Edit</a>
 	</section>
 {% endblock %}

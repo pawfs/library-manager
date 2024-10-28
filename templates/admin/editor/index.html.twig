@@ -7,7 +7,7 @@
 	<section class="container px-4">
 		<h1>Editor list</h1>
 
-		<ul class="list-group list-group-flush">
+		<ul class="list-group list-group-flush mt-4">
 			{% for editor in editors %}
 				<div class="card mb-1">
 					<div class="card-body">
@@ -24,6 +24,8 @@
 				<li>No data saved in database.</li>
 			{% endfor %}
 		</ul>
-		{{ pagerfanta(editors) }}
+		<div class="mt-4">
+			{{ pagerfanta(editors) }}
+		</div>
 	</section>
 {% endblock %}

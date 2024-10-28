@@ -18,16 +18,13 @@
 					<div class="d-flex justify-content-between card-text">
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">
-								<h5>Edited at :
-								</h5>
+								<h5>Edited at :</h5>
 								{{ book.editedAt|date('d M Y') }}</li>
 							<li class="list-group-item">
-								<h5>ISBN :
-								</h5>
+								<h5>ISBN :</h5>
 								{{ book.isbn }}</li>
 							<li class="list-group-item">
-								<h5>Author :
-								</h5>
+								<h5>Author :</h5>
 								<ul class="list-group list-group-flush">
 									{% for author in book.authors %}
 										<li class="list-group-item">
@@ -45,12 +42,10 @@
 								{{ book.editor.name }}
 							</li>
 							<li class="list-group-item">
-								<h5>Page number:
-								</h5>
+								<h5>Page number:</h5>
 								{{ book.pageNumber }}</li>
 							<li class="list-group-item">
-								<h5>Plot :
-								</h5>
+								<h5>Plot :</h5>
 								{{ book.plot }}</li>
 						</ul>
 						<div>

@@ -16,27 +16,29 @@
 			padding: 2px 6px;
 		}
 	</style>
-	<section class="container px-1">
-		<div class="example-wrapper">
-			<h1>Authors list</h1>
-			<ul class="list-group list-group-flush">
-				{% for author in authors %}
-					<div class="card mb-1">
-						<div class="card-body">
-							<div class="card-title d-flex justify-content-between">
-								<a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="stretched-link link-dark">
-									<h4 class="mb-1">{{ author.name }}</h4>
-								</a>
-								<small class="text-muted">Id :
-									{{ author.id }}</small>
-							</div>
+	<section class="container px-4">
+
+		<h1>Author List</h1>
+		<ul class="list-group list-group-flush mt-4">
+			{% for author in authors %}
+				<div class="card mb-1">
+					<div class="card-body">
+						<div class="card-title d-flex justify-content-between">
+							<a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="stretched-link link-dark">
+								<h4 class="mb-1">{{ author.name }}</h4>
+							</a>
+							<small class="text-muted">Id :
+								{{ author.id }}</small>
 						</div>
 					</div>
-				{% else %}
-					<li>Aucun enregistrement en base de données.</li>
-				{% endfor %}
-			</ul>
-      {{ pagerfanta(authors)}}
+				</div>
+			{% else %}
+				<li>Aucun enregistrement en base de données.</li>
+			{% endfor %}
+		</ul>
+		<div class="mt-4">
+			{{ pagerfanta(authors)}}
 		</div>
+
 	</section>
 {% endblock %}

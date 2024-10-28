@@ -5,9 +5,9 @@
 
 {% block body %}
 	<section class="container px-4">
-		<h1>Books List</h1>
+		<h1>Book List</h1>
 
-		<ul class="list-group list-group-flush">
+		<ul class="list-group list-group-flush mt-4">
 			{% for book in books %}
 				<div class="card mb-1">
 					<div class="card-body">
@@ -24,6 +24,8 @@
 				<li>No data saved in database.</li>
 			{% endfor %}
 		</ul>
-		{{ pagerfanta(books) }}
+		<div class="mt-4">
+			{{ pagerfanta(books) }}
+		</div>
 	</section>
 {% endblock %}

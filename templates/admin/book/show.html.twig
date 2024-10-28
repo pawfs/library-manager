@@ -5,10 +5,10 @@
 
 {% block body %}
 	<section class="container px-4">
-		<h1>Book :</h1>
+		<h1>Book Details:</h1>
 
 		{% if book is not null %}
-			<div class="card mb-1 m-auto">
+			<div class="card mb-1 m-auto mt-4">
 				<div class="card-body">
 					<div class="card-title d-flex justify-content-between">
 						<h4 class="mb-1">{{ book.title }}</h4>
@@ -48,16 +48,16 @@
 								<h5>Plot :</h5>
 								{{ book.plot }}</li>
 						</ul>
-						<div>
-							<img src="{{ book.cover }}" alt="Cover of {{ book.title }}">
+						<div class="col-md-6">
+							<img class="mb-5 mb-md-0 w-75" src="{{ book.cover }}" alt="Cover of {{ book.title }}">
 						</div>
 					</div>
 				</div>
 			</div>
 		{% else %}
-			<div>Book 404 not found</div>
+			<div class="mt-4">Book 404 not found</div>
 		{% endif %}
-		<a href="{{ path('app_admin_book_index') }}" class="btn btn-primary">Return</a>
-		<a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning">Edit</a>
+		<a href="{{ path('app_admin_book_index') }}" class="btn btn-primary mt-4">Return</a>
+		<a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning mt-4">Edit</a>
 	</section>
 {% endblock %}

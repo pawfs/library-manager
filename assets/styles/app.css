@@ -12,3 +12,18 @@ body {
 main {
   flex-grow: 1;
 }
+
+.book-picture {
+  height: 50vh;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .book-picture {
+    height: 30vh;
+    /* Adjust the height for smaller screens */
+
+  }
+}

@@ -13,30 +13,30 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class RegistrationController extends AbstractController
 {
-    #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
-    {
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+  #[Route('/admin/user/new', name: 'app_register')]
+  public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
+  {
+    $user = new User();
+    $form = $this->createForm(RegistrationFormType::class, $user);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var string $plainPassword */
-            $plainPassword = $form->get('plainPassword')->getData();
+    if ($form->isSubmitted() && $form->isValid()) {
+      /** @var string $plainPassword */
+      $plainPassword = $form->get('plainPassword')->getData();
 
-            // encode the plain password
-            $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
+      // encode the plain password
+      $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+      $entityManager->persist($user);
+      $entityManager->flush();
 
-            // do anything else you need here, like send an email
+      // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_main');
-        }
-
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form,
-        ]);
+      return $this->redirectToRoute('app_main');
     }
+
+    return $this->render('registration/register.html.twig', [
+      'registrationForm' => $form,
+    ]);
+  }
 }

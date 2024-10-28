@@ -6,7 +6,6 @@
 {% block body %}
 	<section class="container px-4">
 		<h1>Editor list</h1>
-
 		<ul class="list-group list-group-flush mt-4">
 			{% for editor in editors %}
 				<div class="card mb-1">
@@ -20,6 +19,7 @@
 						</div>
 					</div>
 				</div>
+
 			{% else %}
 				<li>No data saved in database.</li>
 			{% endfor %}

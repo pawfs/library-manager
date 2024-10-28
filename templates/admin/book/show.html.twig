@@ -6,7 +6,6 @@
 {% block body %}
 	<section class="container px-4">
 		<h1>Book Details:</h1>
-
 		{% if book is not null %}
 			<div class="card mb-1 m-auto mt-4">
 				<div class="card-body">
@@ -54,10 +53,11 @@
 					</div>
 				</div>
 			</div>
+			<a href="{{ path('app_admin_book_index') }}" class="btn btn-primary mt-4">Return</a>
+			<a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning mt-4">Edit</a>
+
 		{% else %}
-			<div class="mt-4">Book 404 not found</div>
+			<div class="alert alert-danger mt-4">Book 404 not found</div>
 		{% endif %}
-		<a href="{{ path('app_admin_book_index') }}" class="btn btn-primary mt-4">Return</a>
-		<a href="{{ path('app_admin_book_edit', {id: book.id}) }}" class="btn btn-warning mt-4">Edit</a>
 	</section>
 {% endblock %}

@@ -30,9 +30,24 @@
 						<li class="nav-item">
 							<a class="nav-link" href="{{ path('app_book_index') }}">Catalog</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_login') }}">Login</a>
-						</li>
+
+						{% if app.user is null %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_login') }}">Login</a>
+							</li>
+						{% endif %}
+
+						{% if is_granted('IS_AUTHENTICATED') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_admin_main_index') }}">Administration</a>
+							</li>
+						{% endif %}
+
+						{% if is_granted('ROLE_ADMIN') %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_register') }}">New user</a>
+							</li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>

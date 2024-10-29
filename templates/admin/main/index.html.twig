@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration: homepage
+{% endblock %}
+
+{% block body %}
+	<!-- Header-->
+	<header class="bg-primary bg-gradient text-white">
+		<div class="container px-4 text-center">
+			<h1 class="fw-bolder">Biblios</h1>
+			<p class="lead">Administration</p>
+		</div>
+	</header>
+	<!-- About section-->
+	<section id="about">
+		<div class="container px-4">
+			<div class="row gx-4 justify-content-center">
+				<div class="col-lg-8">
+					<ul class="nav justify-content-evenly">
+						<li class="nav-item ">
+							<h4>Books :
+							</h4>
+							<div class="fs-5">
+								<a href="{{ path('app_admin_book_index') }}">
+									<button class="btn btn-outline-primary">List</button>
+								</a>
+								<a href="{{ path('app_admin_book_new') }}">
+									<button class="btn btn-outline-primary">Add</button>
+								</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<h4>Authors :
+							</h4>
+							<div class="fs-5">
+								<a href="{{ path('app_admin_author_index') }}">
+									<button class="btn btn-outline-primary">List</button>
+								</a>
+								<a href="{{ path('app_admin_author_new') }}">
+									<button class="btn btn-outline-primary">Add</button>
+								</a>
+							</div>
+						</li>
+						<li class="nav-item">
+							<h4>Editors :
+							</h4>
+							<div class="fs-5">
+								<a href="{{ path('app_admin_editor_index') }}">
+									<button class="btn btn-outline-primary">List</button>
+								</a>
+								<a href="{{ path('app_admin_editor_new') }}">
+									<button class="btn btn-outline-primary">add</button>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

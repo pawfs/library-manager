@@ -17,7 +17,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/author')]
 class AuthorController extends AbstractController
 {
-  #[IsGranted('IS_AUTHENTICATED')]
+  //#[IsGranted('IS_AUTHENTICATED')]
   #[Route('', name: 'app_admin_author_index', methods: ['GET'])]
   public function index(Request $request, AuthorRepository $authorRepository): Response
   {
@@ -44,12 +44,13 @@ class AuthorController extends AbstractController
     ]);
   }
 
+  #[IsGranted('ROLE_ADD_BOOKS')]
   #[Route('/new', name: 'app_admin_author_new', methods: ['GET', 'POST'])]
   #[Route('/{id}/edit', name: 'app_admin_author_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
   public function new(?Author $author, Request $request, EntityManagerInterface $manager): Response
   {
-    if ($author === null) {
-      $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    if ($author) {
+      $this->denyAccessUnlessGranted('ROLE_EDIT_BOOKS');
     }
     $author ??= new Author();
     $form = $this->createForm(AuthorType::class, $author);

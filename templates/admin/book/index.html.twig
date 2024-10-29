@@ -7,25 +7,30 @@
 	<section class="container px-4">
 		<h1>Book List</h1>
 		<ul class="list-group list-group-flush mt-4">
-			{% for book in books %}
-				<div class="card mb-1">
-					<div class="card-body">
-						<div class="card-title d-flex justify-content-between">
-							<a href="{{ path('app_admin_book_show', {id: book.id}) }}" class="stretched-link link-dark">
-								<h4 class="mb-1">{{ book.title }}</h4>
-							</a>
-							<small class="text-muted">Id :
-								{{ book.id }}</small>
+
+			{% if books|length > 0 %}
+				{% for book in books %}
+					<div class="card mb-1">
+						<div class="card-body">
+							<div class="card-title d-flex justify-content-between">
+								<a href="{{ path('app_admin_book_show', {id: book.id}) }}" class="stretched-link link-dark">
+									<h4 class="mb-1">{{ book.title }}</h4>
+								</a>
+								<small class="text-muted">Id :
+									{{ book.id }}</small>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endfor %}
 
-			{% else %}
-				<li>No data saved in database.</li>
-			{% endfor %}
-		</ul>
-		<div class="mt-4">
-			{{ pagerfanta(books) }}
-		</div>
+			</ul>
+			<div class="mt-4">
+				{{ pagerfanta(books) }}
+			</div>
+
+		{% else %}
+			<p class="text-center mt-5">Uh oh, currently no books in database!</p>
+		{% endif %}
+
 	</section>
 {% endblock %}

@@ -7,25 +7,30 @@
 	<section class="container px-4">
 		<h1>Editor list</h1>
 		<ul class="list-group list-group-flush mt-4">
-			{% for editor in editors %}
-				<div class="card mb-1">
-					<div class="card-body">
-						<div class="card-title d-flex justify-content-between">
-							<a href="{{ path('app_admin_editor_show', {id: editor.id}) }}" class="stretched-link link-dark">
-								<h4 class="mb-1">{{ editor.name }}</h4>
-							</a>
-							<small class="text-muted">Id :
-								{{ editor.id }}</small>
+
+			{% if editors|length > 0 %}
+				{% for editor in editors %}
+					<div class="card mb-1">
+						<div class="card-body">
+							<div class="card-title d-flex justify-content-between">
+								<a href="{{ path('app_admin_editor_show', {id: editor.id}) }}" class="stretched-link link-dark">
+									<h4 class="mb-1">{{ editor.name }}</h4>
+								</a>
+								<small class="text-muted">Id :
+									{{ editor.id }}</small>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endfor %}
 
-			{% else %}
-				<li>No data saved in database.</li>
-			{% endfor %}
-		</ul>
-		<div class="mt-4">
-			{{ pagerfanta(editors) }}
-		</div>
+			</ul>
+			<div class="mt-4">
+				{{ pagerfanta(editors) }}
+			</div>
+
+		{% else %}
+			<p class="text-center mt-5">Uh oh, currently no editors in database!</p>
+		{% endif %}
+
 	</section>
 {% endblock %}

@@ -7,26 +7,29 @@
 	<section class="container px-4">
 		<h1>Author List</h1>
 		<ul class="list-group list-group-flush mt-4">
-			{% for author in authors %}
-				<div class="card mb-1">
-					<div class="card-body">
-						<div class="card-title d-flex justify-content-between">
-							<a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="stretched-link link-dark">
-								<h4 class="mb-1">{{ author.name }}</h4>
-							</a>
-							<small class="text-muted">Id :
-								{{ author.id }}</small>
+			{% if authors|length > 0 %}
+				{% for author in authors %}
+					<div class="card mb-1">
+						<div class="card-body">
+							<div class="card-title d-flex justify-content-between">
+								<a href="{{ path('app_admin_author_show', {id: author.id}) }}" class="stretched-link link-dark">
+									<h4 class="mb-1">{{ author.name }}</h4>
+								</a>
+								<small class="text-muted">Id :
+									{{ author.id }}</small>
+							</div>
 						</div>
 					</div>
-				</div>
+				{% endfor %}
 
-			{% else %}
-				<li>No data saved in database.</li>
-			{% endfor %}
-		</ul>
-		<div class="mt-4">
-			{{ pagerfanta(authors)}}
-		</div>
+			</ul>
+			<div class="mt-4">
+				{{ pagerfanta(authors)}}
+			</div>
+
+		{% else %}
+			<p class="text-center mt-5">Uh oh, currently no authors in database!</p>
+		{% endif %}
 
 	</section>
 {% endblock %}
